@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title th:text="${titulo}">Perfil de Usuario</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+
+<body style="background-color: #00D3F8; color:white">
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-primary" style=" color: white;">
+		<div class="container" style=" color: white;">
+			<a class="navbar-brand" th:href="@{/form}">Detalles de usuario</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link btn btn-outline-dark" th:href="@{/form}">Volver</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container my-4" style="color: white;">
+		<div class="card">
+			<div class="card-header bg-primary">
+				<h3 th:text="${usuario.nombre} + ' ' + ${usuario.apellido}">Nombre del Usuario</h3>
+			</div>
+			<div class="card-body bg-secondary">
+				<table class="table table-bordered">
+					<tbody>
+						<tr style="color: white;">
+							<th>Nombre de usuario:</th>
+							<td style="color: white;" th:text="${usuario.username}"></td>
+						</tr>
+						<tr style="color: white;">
+							<th>Nombre:</th>
+							<td th:text="${usuario.nombre}"></td>
+						</tr>
+						<tr style="color: white;">
+							<th>Apellido:</th>
+							<td th:text="${usuario.apellido}"></td>
+						</tr>
+
+
+
+						<tr style="color: white;">
+							<th>Correo:</th>
+							<td th:text="${usuario.email}"></td>
+						</tr>
+						
+						<tr style="color: white;">
+							<th>Nº Cuenta:</th>
+							<td th:text="${usuario.cuenta}"></td>
+						</tr>
+
+		
+						<tr style="color: white;">
+							<th>Fecha de nacimiento:</th>
+							<td th:text="${usuario.fechaNacimiento}"></td>
+						</tr>
+						<tr style="color: white;">
+							<th>Pais:</th>
+							<td th:text="${usuario.pais.nombre}"></td>
+						</tr>
+
+
+
+					</tbody>
+				</table>
+				<h4 class="card-title">Roles del Usuario:</h4>
+				<ul class="list-group border">
+					<li th:each="role: ${usuario.roles}" class="list-group-item bg-secondary"
+						th:text="${role.id} + ': ' + ${role.nombre} + ' => ' + ${role.role}"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
